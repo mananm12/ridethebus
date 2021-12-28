@@ -250,7 +250,7 @@ void RideBus::play() {
             }
         }
         else {
-            cout << "Finally: Suit? \nOPTIONS:\n1 - Spades\n2 - Hearts\n3 - Clubs\n4 - Diamonds>> ";
+            cout << "Finally: Suit? \nOPTIONS:\n1 - Spades\n2 - Hearts\n3 - Clubs\n4 - Diamonds\n>> ";
             int entry;
             cin >> entry;
             cout << "Dealing card: \n";
