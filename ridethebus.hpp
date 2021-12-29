@@ -55,7 +55,7 @@ public:
     Card dealOne();
 private:
     std::vector<Card> cards;
-    int cardsDealt = 0;
+    size_t cardsDealt = 0;
 };
 
 class RideBus {

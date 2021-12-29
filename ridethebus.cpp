@@ -53,9 +53,9 @@ ostream& operator<<(ostream& os, const Card& card) {
 
 Deck::Deck() {
     cards.resize(52);
-    int packIndex = 0;
+    size_t packIndex = 0;
     for (int suitIndex = 0; suitIndex <= 3; ++suitIndex) {
-        for (int rankIndex = 0; rankIndex <= 12; ++rankIndex) {
+        for (size_t rankIndex = 0; rankIndex <= 12; ++rankIndex) {
             cards[packIndex] = Card(CARD_VALUE_ARRAY[rankIndex], CARD_SUIT_ARRAY[suitIndex]);
             ++packIndex;
         }
@@ -63,12 +63,12 @@ Deck::Deck() {
 }
 
 void Deck::shuffle() {
-    for (int i = 0; i < cards.size(); i++) {
+    for (size_t i = 0; i < cards.size(); i++) {
         std::random_device rd;
         std::mt19937 eng(rd());
-        std::uniform_int_distribution<int> distr(0, i);
+        std::uniform_int_distribution<int> distr(0, static_cast<int>(i));
         
-        int randomSwap = distr(eng);
+        size_t randomSwap = static_cast<size_t>(distr(eng));
         Card temp = cards[randomSwap];
         cards[randomSwap] = cards[i];
         cards[i] = temp;
@@ -141,6 +141,13 @@ void RideBus::processCommandLine(int argc, char **argv) {
             case 'h':
                 cout << "We are going to get drunk playing Ride the Bus. \n";
                 cout << "----------------------------------------------- \n";
+                cout << "Usage: \n";
+                cout << "-h, --help:    This message will display.\n";
+                cout << "-f, --figlet:  All card values will appear in larger";
+                cout << " text.\n";
+                cout << "-e, --extreme: Extreme mode. Every time you get a";
+                cout << " card wrong, you drink for the amount of seconds";
+                cout << " that is equal to the # of times you have been wrong.\n";
                 exit(0);
                 break;
             case 'f':
